@@ -44,30 +44,38 @@
     <div class="container">
       <div class="contact-layout">
 
-        <div class="contact-direct reveal">
+        <section class="contact-direct reveal" aria-labelledby="directTitle">
+          <h2 id="directTitle" class="js-direct-title">וואטסאפ או שיחה</h2>
           <a class="btn btn-primary js-wa" href="#">שליחת הודעה בוואטסאפ</a>
-          <a class="btn btn-ghost js-tel" href="#">התקשרות</a>
-          <p class="phone-line"><a class="js-tel" href="#"><span class="js-phone-text"></span></a></p>
+          <a class="contact-phone js-tel" href="#">
+            <span class="contact-phone-label">התקשרות</span>
+            <span class="contact-phone-num" dir="ltr"><span class="js-phone-text"></span></span>
+          </a>
           <p class="area js-area-note"></p>
-        </div>
+        </section>
 
-        <form class="form reveal" id="contactForm" novalidate>
+        <form class="form reveal" id="contactForm" novalidate aria-labelledby="formTitle" aria-describedby="formLead">
+          <h2 id="formTitle" class="js-form-title">הודעה מוכנה</h2>
+          <p class="form-lead js-form-lead" id="formLead"></p>
           <div class="field">
             <label for="f-name">השם שלך</label>
-            <input id="f-name" name="name" type="text" autocomplete="name" required>
+            <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="80" aria-required="true" aria-describedby="f-name-err">
+            <p class="field-error" id="f-name-err" aria-live="polite"></p>
           </div>
           <div class="field">
             <label for="f-business">שם העסק ותחום העיסוק</label>
-            <input id="f-business" name="business" type="text" autocomplete="organization" required>
+            <input id="f-business" name="business" type="text" autocomplete="organization" required maxlength="120" aria-required="true" aria-describedby="f-business-err">
+            <p class="field-error" id="f-business-err" aria-live="polite"></p>
           </div>
           <div class="field">
-            <label for="f-message">מה אתה צריך <span style="font-weight:400;">(לא חובה)</span></label>
-            <textarea id="f-message" name="message" rows="5"></textarea>
+            <label for="f-message">מה אתה צריך <span class="opt">(לא חובה)</span></label>
+            <textarea id="f-message" name="message" rows="5" maxlength="500"></textarea>
           </div>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
           <div class="btn-row">
-            <button class="btn btn-primary" type="submit">פתיחת ההודעה בוואטסאפ</button>
+            <button class="btn btn-primary" type="submit" id="formSubmit">פתיחת ההודעה בוואטסאפ</button>
           </div>
-          <p class="form-note js-form-note"></p>
+          <p class="form-note js-form-note" id="formNote"></p>
         </form>
 
       </div>
@@ -77,14 +85,32 @@
 </main>
 
 <footer class="site-foot">
-  <div class="container inner">
-    <p>אורי אסא · בניית אתרים לעסקים · <span class="js-area"></span></p>
-    <nav class="foot-links" aria-label="ניווט תחתון">
-      <a href="about.html">אודות</a>
-      <a href="work.html">תיק עבודות</a>
-      <a href="contact.html">יצירת קשר</a>
-      <a class="js-tel" href="#" dir="ltr"><span class="js-phone-text"></span></a>
-    </nav>
+  <div class="container cols">
+    <div class="foot-brand">
+      <b>אורי אסא</b>
+      <p>בניית אתרים לעסקים קטנים - אתר עצמאי שעולה בגוגל, במקום עסק שקיים רק ברשתות.</p>
+    </div>
+    <div>
+      <h2>עמודים</h2>
+      <nav aria-label="ניווט תחתון">
+        <a href="index.html">בית</a>
+        <a href="about.html">אודות</a>
+        <a href="work.html">תיק עבודות</a>
+        <a href="contact.html">יצירת קשר</a>
+      </nav>
+    </div>
+    <div>
+      <h2>יצירת קשר</h2>
+      <div class="foot-contact">
+        <a class="tel js-tel" href="#" dir="ltr"><span class="js-phone-text"></span></a>
+        <a class="js-wa" href="#">שליחת הודעה בוואטסאפ</a>
+        <span class="js-area"></span>
+      </div>
+    </div>
+  </div>
+  <div class="container rule">
+    <span>© <span class="js-year"></span> אורי אסא · כל הזכויות שמורות</span>
+    <span>נבנה ידנית ב-HTML, CSS ו-JavaScript</span>
   </div>
 </footer>
 

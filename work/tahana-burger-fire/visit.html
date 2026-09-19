@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ביקור</title>
+<meta name="description" content="שעות פתיחה, מיקום והזמנת שולחן בטחנה, כפר סבא.">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karantina:wght@400;700&family=Heebo:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="cornermark">
+  <a class="mark js-mark" href="index.html">טחנה</a>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navSheet">
+    <span class="bars" aria-hidden="true"></span><span>תפריט הניווט</span>
+  </button>
+</div>
+
+<div class="navsheet" id="navSheet" aria-hidden="true">
+  <button class="close" id="navClose" aria-label="סגירת הניווט">✕</button>
+  <nav>
+    <a href="index.html">בית</a>
+    <a href="menu.html">התפריט</a>
+    <a href="meat.html">הבשר</a>
+    <a href="gallery.html">גלריה</a>
+    <a href="visit.html" aria-current="page">ביקור</a>
+  </nav>
+  <div class="foot">
+    <span class="js-addr"></span><br>
+    <a class="js-phone" href="#"></a> · <a class="js-email" href="#"></a>
+  </div>
+</div>
+
+<a class="book-pill" href="visit.html">הזמנת שולחן</a>
+
+<main>
+  <section class="panel panel-photo mask" id="visitImage" style="min-height:66svh">
+    <div class="panel-inner">
+      <h1 data-split>ביקור</h1>
+      <p class="rv" id="visitLede"></p>
+    </div>
+  </section>
+
+  <section class="panel panel-dark">
+    <div class="panel-inner">
+      <span class="lbl">שעות ומיקום</span>
+      <h2 class="js-addr" style="font-size:clamp(1.8rem,6vw,3rem)"></h2>
+      <div class="hours" id="hours"></div>
+      <div class="mapwrap rv">
+        <iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="מיקום טחנה על המפה"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel panel-dark" style="min-height:auto;padding-top:0">
+    <div class="panel-inner">
+      <span class="lbl" id="formTitle"></span>
+      <p id="formSubtitle" style="color:var(--bone);max-width:34rem"></p>
+      <form class="form" id="bookForm">
+        <label>שם מלא<input type="text" name="name" required></label>
+        <label>טלפון<input type="tel" name="phone" required></label>
+        <label>תאריך ומספר סועדים<input type="text" name="when" placeholder="למשל: 12.9, שמונה סועדים" required></label>
+        <button type="submit">שליחה</button>
+        <p class="form-ok" id="formOk" hidden></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="endline">
+  <span class="js-addr"></span>
+  <a class="js-phone" href="#"></a>
+  <a class="js-email" href="#"></a>
+  <span class="built js-built"></span>
+</footer>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

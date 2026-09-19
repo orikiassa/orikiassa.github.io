@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>מערכת שעות</title>
+<meta name="description" content="מערכת השעות השבועית של סטודיו ליבה — ריפורמר, מזרן, שיקום והיריון, בוקר וערב.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Miriam+Libre:wght@700&family=Rubik:wght@400;500&display=swap">
+<script>document.documentElement.className += " js";</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">דילוג לתוכן</a>
+
+<div class="stage" id="stage">
+  <div class="stage__layer"></div>
+  <div class="stage__layer"></div>
+  <div class="stage__veil"></div>
+  <span class="stage__count" id="stageCount">01</span>
+  <div class="stage__cap" id="stageCap">
+    <span class="stage__eyebrow" id="stageEyebrow"></span>
+    <p class="stage__text" id="stageText"></p>
+  </div>
+</div>
+
+<div class="column">
+
+  <header class="masthead">
+    <div class="masthead__top">
+      <a class="logo" href="index.html">
+        <b class="js-name">ליבה</b>
+        <small class="js-latin">Liba Pilates Studio</small>
+      </a>
+      <a class="masthead__tel js-phone" href="tel:035564120" dir="ltr">03-556-4120</a>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav">תפריט</button>
+    </div>
+    <nav class="nav" id="nav" aria-label="ניווט ראשי">
+      <a href="index.html">בית</a>
+      <a href="classes.html">שיעורים</a>
+      <a href="schedule.html" aria-current="page">מערכת שעות</a>
+      <a href="prices.html">מחירים</a>
+      <a href="about.html">הסטודיו</a>
+      <a href="contact.html">צור קשר</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="sec" data-shot="studioEmpty" data-eyebrow="בין השיעורים" data-caption="רבע שעה בין קבוצה לקבוצה, בלי צפיפות בכניסה.">
+      <figure class="band-wrap reveal"><img class="band" alt="" loading="lazy"></figure>
+      <span class="kicker reveal">מערכת שעות</span>
+      <h1 class="reveal">השבוע בסטודיו</h1>
+      <p class="lede reveal">מערכת קבועה לאורך השנה. שינויים בחגים ובחופשות מתפרסמים בוואטסאפ של הקבוצה שבוע מראש.</p>
+      <div class="table-wrap reveal">
+        <table class="schedule">
+          <caption>מערכת השעות · <span class="js-week">שבוע 2–6 בספטמבר</span></caption>
+          <thead id="scheduleHead"></thead>
+          <tbody id="scheduleBody"></tbody>
+        </table>
+      </div>
+      <p class="legend reveal">
+        <span><i></i> יש מקום פנוי — לחיצה פותחת הרשמה</span>
+        <span><i class="is-full"></i> השיעור מלא</span>
+      </p>
+    </section>
+
+    <section class="sec sec--surface" data-shot="reformerClass" data-eyebrow="שיעור בוקר" data-caption="06:30. לרוב זו הקבוצה הקבועה ביותר בשבוע.">
+      <figure class="band-wrap reveal"><img class="band" alt="" loading="lazy"></figure>
+      <span class="kicker reveal">הרשמה וביטול</span>
+      <h2 class="reveal">איך זה עובד בפועל</h2>
+      <p class="reveal">מנוי חודשי משריין לך מקום קבוע בשעה קבועה — אותו ריפורמר, אותה קבוצה, כל שבוע. כרטיסייה גמישה יותר: נרשמים לשיעור בודד לפי מקום פנוי.</p>
+      <p class="reveal">ביטול עד 12 שעות לפני השיעור מחזיר אותו לכרטיסייה. ביטול מאוחר יותר נחשב שיעור שנוצל, כי המקום כבר לא מתמלא.</p>
+      <p class="reveal">בעל מנוי שנעדר בשבוע מסוים יכול להשלים שיעור באותו חודש, לפי מקום פנוי.</p>
+    </section>
+
+    <section class="sec sec--char" data-shot="mat" data-eyebrow="פינת המזרנים" data-caption="שיעורי המזרן מתקיימים באותו חלל, אחרי שמפנים מכשירים.">
+      <figure class="band-wrap reveal"><img class="band" alt="" loading="lazy"></figure>
+      <h2 class="reveal">רוצה מקום בשעה מסוימת?</h2>
+      <p class="reveal">כמה מהשעות מלאות באופן קבוע, ויש להן רשימת המתנה שמתקדמת די מהר. אפשר להירשם אליה בטלפון.</p>
+      <div class="btn-row reveal"><a class="btn" href="contact.html">הרשמה לשיעור</a></div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <div class="foot-top">
+      <div>
+        <div class="foot-name"><span class="js-name">ליבה</span><small class="js-specialty">סטודיו פילאטיס</small></div>
+      </div>
+      <nav aria-label="ניווט תחתון">
+        <a href="index.html">בית</a>
+        <a href="classes.html">שיעורים</a>
+        <a href="schedule.html">מערכת שעות</a>
+        <a href="prices.html">מחירים</a>
+        <a href="about.html">הסטודיו</a>
+        <a href="contact.html">צור קשר</a>
+      </nav>
+      <div>
+        <p style="margin-bottom:.5rem"><span class="js-address">שלמה המלך 12, תל אביב</span><br>
+        <a class="js-phone" href="tel:035564120" dir="ltr">03-556-4120</a><br>
+        <a class="js-email" href="mailto:studio@liba-pilates.co.il">studio@liba-pilates.co.il</a></p>
+        <ul class="hours js-hours"></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span class="js-year">2026</span> <span class="js-name">ליבה</span>. כל הזכויות שמורות.</span>
+      <span class="js-built-by">דוגמת עבודה · עסק בדיוני · נבנה על ידי אורי אסא, בניית אתרים לעסקים</span>
+    </div>
+  </footer>
+
+</div>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

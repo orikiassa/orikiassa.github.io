@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>גלריה</title>
+<meta name="description" content="תמונות מטחנה - המנות, הבר והחלל.">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karantina:wght@400;700&family=Heebo:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="cornermark">
+  <a class="mark js-mark" href="index.html">טחנה</a>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navSheet">
+    <span class="bars" aria-hidden="true"></span><span>תפריט הניווט</span>
+  </button>
+</div>
+
+<div class="navsheet" id="navSheet" aria-hidden="true">
+  <button class="close" id="navClose" aria-label="סגירת הניווט">✕</button>
+  <nav>
+    <a href="index.html">בית</a>
+    <a href="menu.html">התפריט</a>
+    <a href="meat.html">הבשר</a>
+    <a href="gallery.html" aria-current="page">גלריה</a>
+    <a href="visit.html">ביקור</a>
+  </nav>
+  <div class="foot">
+    <span class="js-addr"></span><br>
+    <a class="js-phone" href="#"></a> · <a class="js-email" href="#"></a>
+  </div>
+</div>
+
+<a class="book-pill" href="visit.html">הזמנת שולחן</a>
+
+<main>
+  <section class="panel panel-dark" style="min-height:auto;padding-top:34svh;padding-bottom:var(--sp-8)">
+    <div class="panel-inner">
+      <span class="lbl">גלריה</span>
+      <h2 data-split>מה שיוצא
+מהמטבח</h2>
+    </div>
+  </section>
+  <div class="gal" id="gal"></div>
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="close" id="lbClose" aria-label="סגירה">✕</button>
+    <img id="lbImg" src="" alt="">
+    <p id="lbCap"></p>
+  </div>
+</main>
+
+<footer class="endline">
+  <span class="js-addr"></span>
+  <a class="js-phone" href="#"></a>
+  <a class="js-email" href="#"></a>
+  <span class="built js-built"></span>
+</footer>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>בית</title>
+<meta name="description" content="סטודיו פילאטיס קטן בתל אביב — ריפורמר, מזרן, שיקום והיריון בקבוצות של עד שמונה מתאמנים.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Miriam+Libre:wght@700&family=Rubik:wght@400;500&display=swap">
+<script>document.documentElement.className += " js";</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">דילוג לתוכן</a>
+
+<div class="stage" id="stage">
+  <div class="stage__layer"></div>
+  <div class="stage__layer"></div>
+  <div class="stage__veil"></div>
+  <span class="stage__count" id="stageCount">01</span>
+  <div class="stage__cap" id="stageCap">
+    <span class="stage__eyebrow" id="stageEyebrow"></span>
+    <p class="stage__text" id="stageText"></p>
+  </div>
+</div>
+
+<div class="column">
+
+  <header class="masthead">
+    <div class="masthead__top">
+      <a class="logo" href="index.html">
+        <b class="js-name">ליבה</b>
+        <small class="js-latin">Liba Pilates Studio</small>
+      </a>
+      <a class="masthead__tel js-phone" href="tel:035564120" dir="ltr">03-556-4120</a>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav">תפריט</button>
+    </div>
+    <nav class="nav" id="nav" aria-label="ניווט ראשי">
+      <a href="index.html" aria-current="page">בית</a>
+      <a href="classes.html">שיעורים</a>
+      <a href="schedule.html">מערכת שעות</a>
+      <a href="prices.html">מחירים</a>
+      <a href="about.html">הסטודיו</a>
+      <a href="contact.html">צור קשר</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="sec" data-shot="reformerClass" data-eyebrow="אולם הריפורמרים" data-caption="שישה מכשירים, אור צפוני, בלי מראות מקיר לקיר.">
+      <figure class="band-wrap reveal"><img class="band" alt="" loading="lazy"></figure>
+      <span class="kicker js-hero-kicker reveal">סטודיו פילאטיס · תל אביב</span>
+      <h1 id="heroTitle" class="reveal">הגוף לומד לאט. אנחנו לא ממהרים אותו.</h1>
+      <p class="lede js-hero-lede reveal">סטודיו קטן עם שישה ריפורמרים, עד שמונה מתאמנים בשיעור, ומורה שמכירה את הגב שלך בשם.</p>
+      <div class="btn-row reveal">
+        <a class="btn js-hero-cta" href="contact.html">שיעור ניסיון · 60 ₪</a>
+        <a class="btn btn--ghost" href="schedule.html">מערכת השעות</a>
+      </div>
+    </section>
+
+    <section class="sec sec--surface" data-shot="studioEmpty" data-eyebrow="החלל" data-caption="ארבעים ושניים מטר, שישה ריפורמרים ומזרנים לעשרה.">
+      <figure class="band-wrap reveal"><img class="band" alt="" loading="lazy"></figure>
+      <h2 class="reveal">למה שמונה ולא עשרים</h2>
+      <p class="reveal">בקבוצה גדולה המורה רואה את הכיתה. בקבוצה של שמונה היא רואה אותך — את הכתף שעולה, את הברך שנופלת פנימה, את הרגע שבו את מפצה עם הגב התחתון במקום לעבוד עם הבטן.</p>
+      <p class="reveal">זה מה שמפריד בין אימון שמעייף אותך לבין אימון שמשנה את הדרך שבה את זזה גם מחוץ לסטודיו. לכן אנחנו לא מוסיפים מכשירים ולא מגדילים קבוצות.</p>
+    </section>
+
+    <section class="sec" data-shot="mat" data-eyebrow="האביזרים" data-caption="טבעות, כדורים ורצועות — והרבה עבודת ליבה.">
+      <figure class="band-wrap reveal"><img class="band" alt="" loading="lazy"></figure>
+      <span class="kicker reveal">השיעורים</span>
+      <h2 class="reveal">ארבעה סוגי שיעור</h2>
+      <p class="reveal">כל השיעורים בקבוצה קטנה, וכולם מתחילים באותו מקום: מה הגוף שלך יודע לעשות היום.</p>
+      <ul class="rows reveal" id="classBrief"></ul>
+      <p style="margin-top:1.5rem"><a class="link-line" href="classes.html">מה כולל כל שיעור ←</a></p>
+    </section>
+
+    <section class="sec sec--surface" data-shot="duo" data-eyebrow="שיחת ההיכרות" data-caption="עשר דקות של שאלות לפני השיעור הראשון.">
+      <figure class="band-wrap reveal"><img class="band" alt="" loading="lazy"></figure>
+      <span class="kicker reveal">איך מתחילים</span>
+      <h2 class="reveal">שלושה צעדים עד השיעור הראשון</h2>
+      <ol class="rows rows--steps reveal">
+        <li>
+          <div class="row-head"><h3>מתקשרים או משאירים פרטים</h3><span class="row-meta">5 דק׳</span></div>
+          <div class="row-body"><p>אנחנו שואלים מה הרקע שלך, אם יש פציעות או ניתוחים, ומה השעות שנוחות לך.</p></div>
+        </li>
+        <li>
+          <div class="row-head"><h3>שיחת היכרות בסטודיו</h3><span class="row-meta">10 דק׳</span></div>
+          <div class="row-body"><p>לפני השיעור הראשון נפגשים עשר דקות מוקדם. מסתכלים על היציבה, מכוונים את הקפיצים ומחליטים לאיזו קבוצה את מצטרפת.</p></div>
+        </li>
+        <li>
+          <div class="row-head"><h3>שיעור ניסיון</h3><span class="row-meta">55 דק׳ · 60 ₪</span></div>
+          <div class="row-body"><p>שיעור מלא בקבוצה, לא שיעור מקוצר. אם החלטת להמשיך, המחיר יורד מהכרטיסייה הראשונה.</p></div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="sec sec--char" data-shot="tower" data-eyebrow="מגדל הפילאטיס" data-caption="לשיקום ולעבודה מדויקת על קבוצות שריר קטנות.">
+      <figure class="band-wrap reveal"><img class="band" alt="" loading="lazy"></figure>
+      <h2 class="reveal">נשמח להכיר</h2>
+      <p class="reveal">אפשר להתקשר, לכתוב בוואטסאפ, או פשוט להשאיר פרטים ונחזור אליך באותו יום.</p>
+      <div class="btn-row reveal">
+        <a class="btn" href="contact.html">קביעת שיעור ניסיון</a>
+        <a class="btn btn--ghost js-whatsapp" href="#" rel="noopener">וואטסאפ</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <div class="foot-top">
+      <div>
+        <div class="foot-name"><span class="js-name">ליבה</span><small class="js-specialty">סטודיו פילאטיס</small></div>
+      </div>
+      <nav aria-label="ניווט תחתון">
+        <a href="index.html">בית</a>
+        <a href="classes.html">שיעורים</a>
+        <a href="schedule.html">מערכת שעות</a>
+        <a href="prices.html">מחירים</a>
+        <a href="about.html">הסטודיו</a>
+        <a href="contact.html">צור קשר</a>
+      </nav>
+      <div>
+        <p style="margin-bottom:.5rem"><span class="js-address">שלמה המלך 12, תל אביב</span><br>
+        <a class="js-phone" href="tel:035564120" dir="ltr">03-556-4120</a><br>
+        <a class="js-email" href="mailto:studio@liba-pilates.co.il">studio@liba-pilates.co.il</a></p>
+        <ul class="hours js-hours"></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span class="js-year">2026</span> <span class="js-name">ליבה</span>. כל הזכויות שמורות.</span>
+      <span class="js-built-by">דוגמת עבודה · עסק בדיוני · נבנה על ידי אורי אסא, בניית אתרים לעסקים</span>
+    </div>
+  </footer>
+
+</div>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

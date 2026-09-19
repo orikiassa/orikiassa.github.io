@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>בית</title>
+<meta name="description" content="טחנה - בורגר בר בכפר סבא. אנגוס מיושן שנטחן במקום, שלוש פעמים ביום.">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karantina:wght@400;700&family=Heebo:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="cornermark">
+  <a class="mark js-mark" href="index.html">טחנה</a>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navSheet">
+    <span class="bars" aria-hidden="true"></span><span>תפריט הניווט</span>
+  </button>
+</div>
+
+<div class="navsheet" id="navSheet" aria-hidden="true">
+  <button class="close" id="navClose" aria-label="סגירת הניווט">✕</button>
+  <nav>
+    <a href="index.html" aria-current="page">בית</a>
+    <a href="menu.html">התפריט</a>
+    <a href="meat.html">הבשר</a>
+    <a href="gallery.html">גלריה</a>
+    <a href="visit.html">ביקור</a>
+  </nav>
+  <div class="foot">
+    <span class="js-addr"></span><br>
+    <a class="js-phone" href="#"></a> · <a class="js-email" href="#"></a>
+  </div>
+</div>
+
+<a class="book-pill" href="visit.html">הזמנת שולחן</a>
+
+<main>
+  <section class="panel panel-photo" id="openPanel">
+    <div class="panel-inner">
+      <h1 id="openTitle" data-split></h1>
+      <p id="openText" class="rv"></p>
+    </div>
+  </section>
+
+  <section class="panel panel-fire">
+    <div class="panel-inner">
+      <span class="lbl rv" id="sigLabel"></span>
+      <h2 class="rv" id="sigTitle"></h2>
+      <p class="rv" id="sigText"></p>
+    </div>
+  </section>
+
+  <section class="panel panel-dark">
+    <div class="panel-inner">
+      <span class="lbl">מתוך התפריט</span>
+      <h2>ארבעה בורגרים.<br>זהו.</h2>
+      <div id="menuTeaser"></div>
+      <p style="margin-top:var(--sp-7)">
+        <a href="menu.html" style="color:var(--ember);border-bottom:1px solid currentColor;font-weight:500">לתפריט המלא</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="panel panel-photo" id="closePanel">
+    <div class="panel-inner">
+      <h2 id="closeTitle" class="rv"></h2>
+      <p class="rv"><a href="visit.html" style="border-bottom:1px solid currentColor">שעות פתיחה והזמנת שולחן</a></p>
+    </div>
+  </section>
+</main>
+
+<footer class="endline">
+  <span class="js-addr"></span>
+  <a class="js-phone" href="#"></a>
+  <a class="js-email" href="#"></a>
+  <span class="built js-built"></span>
+</footer>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

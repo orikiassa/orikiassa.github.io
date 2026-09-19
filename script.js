@@ -86,9 +86,16 @@
     var host = $('#askContent');
     if (!host) { return; }
     host.innerHTML =
+      '<div class="ask-id">' +
+        '<b>' + esc(CFG.business.name) + '</b>' +
+        '<span>' + esc(CFG.business.tagline) + ' · ' + esc(CFG.business.area) + '</span>' +
+        '<a class="js-tel" href="' + telLink() + '" dir="ltr">' + esc(CFG.business.phoneDisplay) + '</a>' +
+      '</div>' +
       '<h1>' + esc(CFG.ask.question) +
       ' <span class="mark">' + esc(CFG.ask.questionMark) + '</span></h1>' +
-      '<p class="hint">' + esc(CFG.ask.hint) + '</p>';
+      '<dl class="ask-meta">' + CFG.ask.meta.map(function (m) {
+        return '<div><dt>' + esc(m.k) + '</dt><dd>' + esc(m.v) + '</dd></div>';
+      }).join('') + '</dl>';
   }
 
   /* ---------- קצב שאלה-תשובה ---------- */
@@ -96,10 +103,12 @@
   function renderQa() {
     var host = $('#qaList');
     if (!host) { return; }
-    host.innerHTML = CFG.qa.map(function (item) {
-      return '<div class="qa-item reveal">' +
-               '<p class="q">' + esc(item.q) + ' <span class="mk">' + esc(item.mark) + '</span>' +
-               esc(item.qEnd || '') + '</p>' +
+    host.className = 'qa-list';
+    host.innerHTML = CFG.qa.map(function (item, i) {
+      return '<div class="qa-row reveal">' +
+               '<p class="num">' + ('0' + (i + 1)) + '</p>' +
+               '<h3 class="q">' + esc(item.q) + ' <em>' + esc(item.mark) + '</em>' +
+                 esc(item.qEnd || '') + '</h3>' +
                '<p class="a">' + esc(item.a) + '</p>' +
              '</div>';
     }).join('');
@@ -135,6 +144,9 @@
                  '<p class="actions"><a class="link-arrow" href="work/' + esc(w.slug) +
                    '/index.html" target="_blank" rel="noopener">לצפייה בהדגמה החיה</a></p>' +
                '</div>' +
+               '<dl class="meta">' + (w.meta || []).map(function (m) {
+                 return '<div><dt>' + esc(m.k) + '</dt><dd>' + esc(m.v) + '</dd></div>';
+               }).join('') + '</dl>' +
              '</article>';
     }).join('');
   }
@@ -198,27 +210,91 @@
     if (lede) { lede.textContent = CFG.evidence.lede; }
   }
 
+  /* ---------- טקסטים של יצירת קשר (גם בעמודים בלי טופס) ---------- */
+
+  function fillContactCopy() {
+    $$('.js-form-note').forEach(function (el) { el.textContent = CFG.contact.formNote; });
+    $$('.js-contact-lede').forEach(function (el) { el.textContent = CFG.contact.lede; });
+    $$('.js-area-note').forEach(function (el) { el.textContent = CFG.contact.areaNote; });
+    $$('.js-direct-title').forEach(function (el) { el.textContent = CFG.contact.directTitle; });
+    $$('.js-form-title').forEach(function (el) { el.textContent = CFG.contact.formTitle; });
+    $$('.js-form-lead').forEach(function (el) { el.textContent = CFG.contact.formLead; });
+  }
+
   /* ---------- טופס יצירת קשר -> הודעת וואטסאפ מוכנה ---------- */
 
   function wireForm() {
     var form = $('#contactForm');
     if (!form) { return; }
 
-    $$('.js-form-note').forEach(function (el) { el.textContent = CFG.contact.formNote; });
-    $$('.js-contact-lede').forEach(function (el) { el.textContent = CFG.contact.lede; });
-    $$('.js-area-note').forEach(function (el) { el.textContent = CFG.contact.areaNote; });
+    var nameInput = $('#f-name');
+    var businessInput = $('#f-business');
+    var statusEl = $('#formStatus');
+    var submitBtn = $('#formSubmit');
+    var fields = [nameInput, businessInput].filter(Boolean);
+
+    function errorFor(input) {
+      if (input === nameInput) { return CFG.contact.nameError; }
+      return CFG.contact.businessError;
+    }
+
+    function setFieldError(input, message) {
+      var err = document.getElementById(input.id + '-err');
+      input.classList.toggle('is-invalid', !!message);
+      input.setAttribute('aria-invalid', message ? 'true' : 'false');
+      if (err) { err.textContent = message || ''; }
+    }
+
+    function validateField(input) {
+      var empty = !String(input.value || '').trim();
+      setFieldError(input, empty ? errorFor(input) : '');
+      return !empty;
+    }
+
+    function setStatus(message, kind) {
+      if (!statusEl) { return; }
+      statusEl.textContent = message || '';
+      statusEl.classList.remove('is-ok', 'is-warn');
+      if (kind) { statusEl.classList.add(kind); }
+    }
+
+    fields.forEach(function (input) {
+      input.addEventListener('blur', function () { validateField(input); });
+      input.addEventListener('input', function () {
+        if (input.classList.contains('is-invalid')) { validateField(input); }
+        setStatus('');
+      });
+    });
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      var firstInvalid = null;
+      fields.forEach(function (input) {
+        if (!validateField(input) && !firstInvalid) { firstInvalid = input; }
+      });
+      if (firstInvalid) {
+        firstInvalid.focus();
+        setStatus('');
+        return;
+      }
+
       var data = new FormData(form);
       var lines = [
         'היי אורי, הגעתי מהאתר.',
-        'שם: ' + (data.get('name') || ''),
-        'העסק: ' + (data.get('business') || '')
+        'שם: ' + String(data.get('name') || '').trim(),
+        'העסק: ' + String(data.get('business') || '').trim()
       ];
-      var msg = data.get('message');
+      var msg = String(data.get('message') || '').trim();
       if (msg) { lines.push('מה אני צריך: ' + msg); }
-      window.open(waLink(lines.join('\n')), '_blank', 'noopener');
+
+      if (submitBtn) { submitBtn.disabled = true; }
+      var win = window.open(waLink(lines.join('\n')), '_blank', 'noopener');
+      if (!win) {
+        setStatus(CFG.contact.blocked, 'is-warn');
+      } else {
+        setStatus(CFG.contact.opened, 'is-ok');
+      }
+      if (submitBtn) { submitBtn.disabled = false; }
     });
   }
 
@@ -254,6 +330,7 @@
     renderAbout();
     renderEvidence();
     wireContactLinks();
+    fillContactCopy();
     wireForm();
     wireNav();
     wireReveal();

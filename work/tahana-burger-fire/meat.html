@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>הבשר</title>
+<meta name="description" content="איך נטחן הבשר בטחנה - אנגוס מיושן 21 יום, נטחן במקום שלוש פעמים ביום.">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karantina:wght@400;700&family=Heebo:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="cornermark">
+  <a class="mark js-mark" href="index.html">טחנה</a>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navSheet">
+    <span class="bars" aria-hidden="true"></span><span>תפריט הניווט</span>
+  </button>
+</div>
+
+<div class="navsheet" id="navSheet" aria-hidden="true">
+  <button class="close" id="navClose" aria-label="סגירת הניווט">✕</button>
+  <nav>
+    <a href="index.html">בית</a>
+    <a href="menu.html">התפריט</a>
+    <a href="meat.html" aria-current="page">הבשר</a>
+    <a href="gallery.html">גלריה</a>
+    <a href="visit.html">ביקור</a>
+  </nav>
+  <div class="foot">
+    <span class="js-addr"></span><br>
+    <a class="js-phone" href="#"></a> · <a class="js-email" href="#"></a>
+  </div>
+</div>
+
+<a class="book-pill" href="visit.html">הזמנת שולחן</a>
+
+<main>
+  <section class="panel panel-photo mask" id="meatImage" style="min-height:70svh">
+    <div class="panel-inner">
+      <h1 data-split>הבשר</h1>
+    </div>
+  </section>
+
+  <section class="panel panel-dark">
+    <div class="panel-inner">
+      <p class="lede rv" id="meatLede"></p>
+      <dl class="spec" id="meatSpec"></dl>
+      <p class="closing rv" id="meatClosing"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="endline">
+  <span class="js-addr"></span>
+  <a class="js-phone" href="#"></a>
+  <a class="js-email" href="#"></a>
+  <span class="built js-built"></span>
+</footer>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
