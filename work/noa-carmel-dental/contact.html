@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>צור קשר</title>
+<meta name="description" content="מרפאת שיניים ד״ר נועה כרמל - רפואת שיניים פרטית">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&family=Assistant:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo js-logo-text" href="index.html">שם המרפאה</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">בית</a>
+      <a href="about.html">אודות</a>
+      <a href="services.html">טיפולים</a>
+      <a href="gallery.html">גלריה</a>
+      <a href="contact.html" aria-current="page">צור קשר</a>
+      <a href="contact.html" class="btn btn-primary nav-cta"><span class="js-nav-cta-text"></span></a>
+    </nav>
+    <a href="contact.html" class="btn btn-primary header-cta desktop-only"><span class="js-nav-cta-text"></span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="פתיחת תפריט" aria-expanded="false"></button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow">נשמח לראות אתכם</p>
+    <h1 id="contactFormTitle"></h1>
+    <p class="sub" id="contactFormSubtitle"></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container contact-grid">
+    <form class="contact-form" id="contactForm">
+      <label>
+        שם מלא
+        <input type="text" name="name" required>
+      </label>
+      <label>
+        טלפון
+        <input type="tel" name="phone" required>
+      </label>
+      <label>
+        סוג טיפול מבוקש
+        <select name="treatment" id="treatmentSelect"></select>
+      </label>
+      <label>
+        תאריך מועדף
+        <input type="date" name="date">
+      </label>
+      <label>
+        הערות
+        <textarea name="notes" rows="3"></textarea>
+      </label>
+      <button type="submit" class="btn btn-primary">שליחת בקשה</button>
+      <p class="form-success" id="formSuccess" hidden></p>
+    </form>
+
+    <div class="contact-side">
+      <div class="contact-panel">
+        <strong>פרטי התקשרות</strong>
+        <p id="contactAddress" style="margin-top:10px; opacity:.9;"></p>
+        <a id="contactPhone" href="#"></a>
+        <a id="contactWhatsapp" href="#" target="_blank" rel="noopener">שיחה בוואטסאפ</a>
+        <a id="contactEmail" href="#"></a>
+      </div>
+      <div>
+        <strong>שעות פעילות</strong>
+        <table class="hours-table" id="hoursTable" style="margin-top:14px;"></table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <strong class="js-footer-name"></strong>
+      <p class="js-footer-specialty"></p>
+      <p class="js-footer-address"></p>
+    </div>
+    <nav class="footer-nav">
+      <a href="index.html">בית</a>
+      <a href="about.html">אודות</a>
+      <a href="services.html">טיפולים</a>
+      <a href="gallery.html">גלריה</a>
+      <a href="contact.html">צור קשר</a>
+    </nav>
+    <div class="footer-contact">
+      <a class="js-footer-phone" href="#"></a>
+      <a class="js-footer-email" href="#"></a>
+    </div>
+  </div>
+  <p class="built-by js-built-by"></p>
+</footer>
+
+<a class="mobile-call-btn" id="mobileCallBtn" href="#"></a>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

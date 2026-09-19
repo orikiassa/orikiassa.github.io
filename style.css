@@ -1,0 +1,700 @@
+/* ==========================================================================
+   אורי אסא · בניית אתרים לעסקים
+   כיוון עיצובי: "השאלה" · פלטת קובלט
+   שלד: מסך פתיחה טיפוגרפי בלי תמונה, ניווט שנחשף בגלילה, קצב שאלה-תשובה,
+         רצועת יצירת קשר באמצע העמוד ולא רק בסוף.
+   דרגת תנועה: א' (מרוסן)
+   ========================================================================== */
+
+:root {
+  /* ===== פלטה (כל זוג נבדק ל-WCAG AA) ===== */
+  --c-dark:      #1c1f24;  /* גרפיט - מסך פתיחה, רצועות, פוטר */
+  --c-bg:        #efefed;  /* עצם - רקע ראשי */
+  --c-card:      #ffffff;  /* כרטיסים */
+  --c-ink:       #1c1f24;  /* טקסט ראשי (14.35:1 על עצם) */
+  --c-muted:     #5a5f66;  /* טקסט משני (5.59:1 על עצם) */
+  --c-accent:    #1d4ed8;  /* קובלט - הצבע האינטראקטיבי היחיד (5.82:1 על עצם) */
+  --c-accent-dk: #1741b6;  /* ריחוף (7.39:1 על עצם) */
+  --c-accent-lt: #93b4ff;  /* טקסט מבטא על גרפיט בלבד (8.04:1). אסור על רקע בהיר */
+  --c-on-dark:   #efefed;  /* טקסט על גרפיט (14.35:1) */
+  --c-dim:       #9096a0;  /* טקסט עמום על גרפיט בלבד (5.55:1) */
+  --c-line:      rgba(28, 31, 36, .14);
+  --c-line-dark: rgba(239, 239, 237, .18);
+
+  /* ===== סקאלת גופן (design-standards) ===== */
+  --fs-xs: .75rem;  --fs-sm: .875rem; --fs-base: 1rem;  --fs-md: 1.125rem;
+  --fs-lg: 1.375rem; --fs-xl: 2.125rem; --fs-display: 3rem;
+  /* חריגה מכוונת כלפי מעלה: הטיפוגרפיה היא הגיבור של מסך הפתיחה */
+  --fs-mega: clamp(2.5rem, 9vw, 5.25rem);
+
+  /* ===== letter-spacing מותאם לעברית ===== */
+  --ls-display: -.015em; --ls-xl: -.01em; --ls-lg: -.005em;
+  --ls-base: 0; --ls-sm: .01em; --ls-kicker: .08em;
+
+  /* ===== line-height ===== */
+  --lh-display: 1.1; --lh-heading: 1.3; --lh-body: 1.6; --lh-tight: 1.2;
+
+  /* ===== מרווחים ===== */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px; --sp-5: 24px;
+  --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 96px; --sp-10: 128px;
+  --max-container: 1160px;
+  --content-padding: 24px;
+
+  /* ===== עקומות ומשכים (דרגה א') ===== */
+  --ease-out:      cubic-bezier(.25, 1, .5, 1);
+  --ease-out-expo: cubic-bezier(.16, 1, .3, 1);
+  --ease-standard: cubic-bezier(.4, 0, .2, 1);
+  --ease-in-out:   cubic-bezier(.65, 0, .35, 1);
+
+  /* ===== פינות: הכול חד. 2px לשדות טופס בלבד ===== */
+  --r-0: 0;
+  --r-field: 2px;
+
+  /* ===== צללים בגוון גרפיט ===== */
+  --shadow-sm: 0 1px 2px rgba(28,31,36,.06), 0 2px 6px rgba(28,31,36,.06);
+  --shadow-md: 0 4px 8px -4px rgba(28,31,36,.12), 0 12px 24px -12px rgba(28,31,36,.18);
+  --shadow-lg: 0 12px 25px -11px rgba(29,78,216,.22), 0 7px 15px -7px rgba(28,31,36,.12);
+
+  --font-display: 'Heebo', system-ui, -apple-system, sans-serif;
+  --font-body: 'Assistant', system-ui, -apple-system, sans-serif;
+
+  --nav-h: 62px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-base);
+  color: var(--c-ink);
+  background: var(--c-bg);
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: var(--lh-display);
+  text-wrap: balance;
+}
+
+:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 3px;
+}
+.on-dark :focus-visible,
+.site-foot :focus-visible,
+.cta-band :focus-visible { outline-color: var(--c-accent-lt); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ========================= פריסה ========================= */
+
+.container {
+  max-width: var(--max-container);
+  margin-inline: auto;
+  padding-inline: var(--content-padding);
+}
+
+.section { padding-block: clamp(56px, 8vw, 112px); }
+.section--tight { padding-block: clamp(40px, 5vw, 72px); }
+
+.prose { max-width: 40rem; }
+.prose p { color: var(--c-muted); }
+.prose p + p { margin-top: var(--sp-5); }
+
+.skip {
+  position: absolute;
+  inset-inline-start: var(--sp-4);
+  top: -100px;
+  z-index: 100;
+  background: var(--c-accent);
+  color: #fff;
+  padding: var(--sp-3) var(--sp-5);
+  font-weight: 600;
+  transition: top .2s var(--ease-out);
+}
+.skip:focus { top: var(--sp-4); }
+
+/* ========================= ניווט ========================= */
+/* בדף הבית הניווט נחשף רק אחרי מסך הפתיחה. בשאר העמודים הוא גלוי מיד. */
+
+.site-nav {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 50;
+  background: var(--c-card);
+  border-bottom: 1px solid var(--c-line);
+  transition: transform .3s var(--ease-out), opacity .3s var(--ease-out);
+}
+.nav-hidden-until-scroll .site-nav {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+.nav-hidden-until-scroll .site-nav.is-shown,
+.site-nav:focus-within {
+  transform: none;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav-inner {
+  max-width: var(--max-container);
+  margin-inline: auto;
+  padding-inline: var(--content-padding);
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-5);
+}
+
+.nav-brand {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-md);
+  letter-spacing: var(--ls-lg);
+  white-space: nowrap;
+}
+.nav-brand small {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-sm);
+  color: var(--c-muted);
+  line-height: 1.2;
+  margin-top: 1px;
+}
+
+.nav-menu { display: flex; align-items: center; gap: var(--sp-6); }
+.nav-menu a {
+  font-size: var(--fs-sm);
+  color: var(--c-muted);
+  padding-block: var(--sp-2);
+  transition: color .2s var(--ease-out), box-shadow .2s var(--ease-out);
+}
+.nav-menu a:hover { color: var(--c-ink); }
+.nav-menu a[aria-current="page"] {
+  color: var(--c-ink);
+  font-weight: 600;
+  box-shadow: 0 2px 0 var(--c-accent);
+}
+.nav-menu .nav-cta {
+  background: var(--c-accent);
+  color: #fff;
+  font-weight: 600;
+  padding: 10px var(--sp-5);
+  box-shadow: none;
+  transition: background-color .2s var(--ease-out), transform .2s var(--ease-out);
+}
+.nav-menu .nav-cta:hover {
+  background: var(--c-accent-dk);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.nav-toggle {
+  display: none;
+  width: 42px; height: 42px;
+  align-items: center; justify-content: center;
+  border: 1px solid var(--c-line);
+}
+.nav-toggle span, .nav-toggle span::before, .nav-toggle span::after {
+  display: block; width: 19px; height: 2px; background: var(--c-ink);
+  transition: transform .3s var(--ease-in-out), opacity .2s var(--ease-out);
+}
+.nav-toggle span::before, .nav-toggle span::after { content: ""; position: absolute; }
+.nav-toggle span::before { transform: translateY(-6px); }
+.nav-toggle span::after  { transform: translateY(6px); }
+.nav-toggle[aria-expanded="true"] span { background: transparent; }
+.nav-toggle[aria-expanded="true"] span::before { transform: rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span::after  { transform: rotate(-45deg); }
+
+/* ========================= מסך הפתיחה ========================= */
+
+.ask {
+  min-height: 88svh;
+  background: var(--c-dark);
+  color: var(--c-on-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-block: var(--sp-9) var(--sp-7);
+}
+.ask h1 {
+  font-size: var(--fs-mega);
+  letter-spacing: var(--ls-display);
+  line-height: 1.08;
+  max-width: 15ch;
+}
+.ask h1 .mark { color: var(--c-accent-lt); display: block; }
+.ask .hint {
+  margin-top: var(--sp-7);
+  font-size: var(--fs-sm);
+  letter-spacing: var(--ls-kicker);
+  color: var(--c-dim);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.ask .hint::after {
+  content: "";
+  width: 1px; height: 26px;
+  background: var(--c-dim);
+  animation: hintDrop 2.2s var(--ease-in-out) infinite;
+  transform-origin: top;
+}
+@keyframes hintDrop {
+  0%, 100% { transform: scaleY(.4); opacity: .5; }
+  50%      { transform: scaleY(1);  opacity: 1; }
+}
+
+/* ========================= כותרת עמוד פנימי ========================= */
+
+.page-head {
+  background: var(--c-dark);
+  color: var(--c-on-dark);
+  padding-top: calc(var(--nav-h) + clamp(48px, 7vw, 88px));
+  padding-bottom: clamp(48px, 7vw, 88px);
+}
+.page-head .kicker {
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-kicker);
+  color: var(--c-accent-lt);
+  font-weight: 600;
+  margin-bottom: var(--sp-4);
+}
+.page-head h1 {
+  font-size: clamp(var(--fs-xl), 6vw, var(--fs-display));
+  letter-spacing: var(--ls-display);
+  max-width: 18ch;
+}
+.page-head .lede {
+  margin-top: var(--sp-5);
+  font-size: var(--fs-md);
+  color: var(--c-dim);
+  max-width: 40rem;
+}
+
+/* ========================= קצב שאלה-תשובה ========================= */
+
+.qa-item + .qa-item { margin-top: var(--sp-8); }
+.qa-item .q {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(var(--fs-lg), 3.4vw, var(--fs-xl));
+  letter-spacing: var(--ls-xl);
+  line-height: var(--lh-heading);
+  max-width: 22ch;
+}
+.qa-item .q .mk {
+  background: var(--c-accent);
+  color: #fff;
+  padding-inline: 6px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.qa-item .q::after {
+  content: "";
+  display: block;
+  width: 52px; height: 5px;
+  background: var(--c-accent);
+  margin-top: var(--sp-5);
+}
+.qa-item .a {
+  margin-top: var(--sp-5);
+  max-width: 40rem;
+  color: var(--c-muted);
+  padding-inline-start: var(--sp-5);
+  border-inline-start: 1px solid var(--c-line);
+}
+
+/* ========================= כותרת קטע ========================= */
+
+.sec-head { margin-bottom: var(--sp-7); }
+.sec-head .kicker {
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-kicker);
+  font-weight: 600;
+  color: var(--c-accent);
+  margin-bottom: var(--sp-3);
+}
+.sec-head h2 {
+  font-size: clamp(var(--fs-lg), 4vw, var(--fs-xl));
+  letter-spacing: var(--ls-xl);
+  max-width: 20ch;
+}
+.sec-head p {
+  margin-top: var(--sp-4);
+  color: var(--c-muted);
+  max-width: 40rem;
+}
+
+/* ========================= כפתורים ========================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--fs-base);
+  line-height: var(--lh-tight);
+  padding: 15px var(--sp-6);
+  border: 1px solid transparent;
+  transition: background-color .2s var(--ease-out), transform .2s var(--ease-out),
+              color .2s var(--ease-out), border-color .2s var(--ease-out);
+}
+.btn svg { width: 19px; height: 19px; flex: none; }
+
+.btn-primary { background: var(--c-accent); color: #fff; }
+.btn-primary:hover { background: var(--c-accent-dk); transform: translateY(-2px); }
+
+.btn-ghost { border-color: currentColor; color: var(--c-ink); }
+.btn-ghost:hover { transform: translateY(-2px); background: var(--c-ink); color: var(--c-bg); }
+
+.on-dark .btn-ghost { color: var(--c-on-dark); }
+.on-dark .btn-ghost:hover { background: var(--c-on-dark); color: var(--c-dark); }
+
+.btn-row { display: flex; flex-wrap: wrap; gap: var(--sp-4); }
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-weight: 600;
+  color: var(--c-accent);
+  box-shadow: 0 1px 0 currentColor;
+  transition: color .2s var(--ease-out), gap .2s var(--ease-out);
+}
+.link-arrow:hover { color: var(--c-accent-dk); gap: var(--sp-3); }
+.link-arrow::after { content: "←"; font-size: 1.1em; line-height: 1; }
+
+/* ========================= רצועת CTA ========================= */
+
+.cta-band { background: var(--c-dark); color: var(--c-on-dark); }
+.cta-band .inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-6);
+  padding-block: clamp(40px, 6vw, 72px);
+}
+.cta-band h2 {
+  font-size: clamp(var(--fs-lg), 3.6vw, var(--fs-xl));
+  letter-spacing: var(--ls-xl);
+  max-width: 18ch;
+}
+.cta-band p { margin-top: var(--sp-3); color: var(--c-dim); max-width: 34rem; }
+.cta-band .btn-primary:hover { background: var(--c-accent-lt); color: var(--c-dark); }
+
+/* ========================= תהליך (רצף ממוספר אמיתי) ========================= */
+
+.steps {
+  display: grid;
+  gap: var(--sp-6);
+  grid-template-columns: 1fr;
+  counter-reset: step;
+}
+@media (min-width: 760px) { .steps { grid-template-columns: repeat(3, 1fr); gap: var(--sp-5); } }
+.step {
+  counter-increment: step;
+  padding-top: var(--sp-5);
+  border-top: 2px solid var(--c-ink);
+}
+.step::before {
+  content: counter(step);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-sm);
+  color: var(--c-accent);
+  display: block;
+  margin-bottom: var(--sp-3);
+}
+.step h3 { font-size: var(--fs-lg); letter-spacing: var(--ls-lg); margin-bottom: var(--sp-3); }
+.step p { color: var(--c-muted); font-size: var(--fs-sm); }
+
+/* ========================= עבודות ========================= */
+
+.work-grid { display: grid; gap: var(--sp-6); grid-template-columns: 1fr; }
+@media (min-width: 800px) { .work-grid { grid-template-columns: 1fr 1fr; } }
+
+.work-card {
+  background: var(--c-card);
+  border: 1px solid var(--c-line);
+  display: flex;
+  flex-direction: column;
+  transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out);
+}
+.work-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.work-card .shot {
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top center;
+  border-bottom: 1px solid var(--c-line);
+  background: var(--c-bg);
+}
+.work-card .body { padding: var(--sp-5); display: flex; flex-direction: column; gap: var(--sp-3); flex: 1; }
+.work-card h3 { font-size: var(--fs-lg); letter-spacing: var(--ls-lg); }
+.work-card .field { font-size: var(--fs-sm); color: var(--c-muted); }
+.work-card .blurb { font-size: var(--fs-sm); color: var(--c-muted); }
+.work-card .actions { margin-top: auto; padding-top: var(--sp-3); }
+
+.tag {
+  align-self: flex-start;
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-kicker);
+  font-weight: 700;
+  color: var(--c-accent);
+  border: 1px solid var(--c-accent);
+  padding: 3px 10px;
+}
+
+/* הבהרה שהדמואים אינם לקוחות אמיתיים - מופיעה בכל מקום שבו הם מוצגים */
+.disclaimer {
+  border-inline-start: 4px solid var(--c-accent);
+  background: var(--c-card);
+  padding: var(--sp-5);
+  max-width: 44rem;
+}
+.disclaimer h3 { font-size: var(--fs-base); letter-spacing: var(--ls-base); margin-bottom: var(--sp-2); }
+.disclaimer p { font-size: var(--fs-sm); color: var(--c-muted); }
+
+.work-detail + .work-detail { margin-top: var(--sp-9); padding-top: var(--sp-9); border-top: 1px solid var(--c-line); }
+.work-detail .layout { display: grid; gap: var(--sp-6); grid-template-columns: 1fr; align-items: start; }
+@media (min-width: 900px) { .work-detail .layout { grid-template-columns: 1.15fr .85fr; gap: var(--sp-7); } }
+.work-detail .shot {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top center;
+  border: 1px solid var(--c-line);
+  background: var(--c-card);
+}
+.work-detail h2 { font-size: clamp(var(--fs-lg), 3.4vw, var(--fs-xl)); letter-spacing: var(--ls-xl); margin: var(--sp-4) 0 var(--sp-3); }
+.work-detail .field { color: var(--c-muted); font-size: var(--fs-sm); }
+.work-detail .blurb { margin-top: var(--sp-5); color: var(--c-muted); }
+.work-detail ul { list-style: none; margin-top: var(--sp-5); display: grid; gap: var(--sp-3); }
+.work-detail li {
+  font-size: var(--fs-sm);
+  padding-inline-start: var(--sp-5);
+  position: relative;
+}
+.work-detail li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0; top: .62em;
+  width: 10px; height: 2px;
+  background: var(--c-accent);
+}
+.work-detail .actions { margin-top: var(--sp-6); }
+
+/* ========================= ראיות ========================= */
+
+.evidence-list { display: grid; gap: 0; }
+.evidence-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-3);
+  padding-block: var(--sp-6);
+  border-top: 1px solid var(--c-line);
+}
+.evidence-row:last-child { border-bottom: 1px solid var(--c-line); }
+@media (min-width: 760px) {
+  .evidence-row { grid-template-columns: 8rem 1fr; gap: var(--sp-6); align-items: start; }
+}
+.evidence-row .stat {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-xl);
+  letter-spacing: var(--ls-xl);
+  line-height: 1;
+  color: var(--c-accent);
+  font-variant-numeric: tabular-nums;
+  direction: ltr;
+  text-align: start;
+}
+.evidence-row .claim { font-size: var(--fs-md); }
+.evidence-row .source {
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-sm);
+  color: var(--c-muted);
+  margin-top: var(--sp-2);
+}
+.evidence-row .note { font-size: var(--fs-sm); color: var(--c-muted); margin-top: var(--sp-3); max-width: 38rem; }
+
+.honesty {
+  margin-top: var(--sp-8);
+  background: var(--c-dark);
+  color: var(--c-on-dark);
+  padding: clamp(28px, 4vw, 48px);
+}
+.honesty h3 { font-size: var(--fs-lg); letter-spacing: var(--ls-lg); margin-bottom: var(--sp-4); }
+.honesty p { color: var(--c-dim); max-width: 40rem; }
+.honesty .close {
+  margin-top: var(--sp-5);
+  color: var(--c-on-dark);
+  font-weight: 600;
+  border-inline-start: 3px solid var(--c-accent-lt);
+  padding-inline-start: var(--sp-4);
+}
+
+/* ========================= יצירת קשר ========================= */
+
+.contact-layout { display: grid; gap: var(--sp-8); grid-template-columns: 1fr; align-items: start; }
+@media (min-width: 900px) { .contact-layout { grid-template-columns: .9fr 1.1fr; gap: var(--sp-9); } }
+
+.contact-direct { display: grid; gap: var(--sp-4); }
+.contact-direct .btn { justify-content: center; }
+.contact-direct .phone-line {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-xl);
+  letter-spacing: var(--ls-xl);
+  margin-top: var(--sp-2);
+}
+.contact-direct .area {
+  margin-top: var(--sp-3);
+  font-size: var(--fs-sm);
+  color: var(--c-muted);
+  border-top: 1px solid var(--c-line);
+  padding-top: var(--sp-5);
+}
+
+.form { display: grid; gap: var(--sp-5); }
+.field label {
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  margin-bottom: var(--sp-2);
+}
+.field input, .field textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--c-ink);
+  background: var(--c-card);
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-field);
+  padding: 13px var(--sp-4);
+  transition: border-color .2s var(--ease-out), box-shadow .2s var(--ease-out);
+}
+.field input:focus, .field textarea:focus {
+  border-color: var(--c-accent);
+  box-shadow: 0 0 0 3px rgba(29,78,216,.14);
+  outline: none;
+}
+.field textarea { min-height: 128px; resize: vertical; }
+.form-note { font-size: var(--fs-sm); color: var(--c-muted); }
+
+/* ========================= פוטר - שורה דקה אחת ========================= */
+
+.site-foot {
+  background: var(--c-dark);
+  color: var(--c-dim);
+  font-size: var(--fs-sm);
+}
+.site-foot .inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  padding-block: var(--sp-6);
+}
+.site-foot a { color: var(--c-on-dark); transition: color .2s var(--ease-out); }
+.site-foot a:hover { color: var(--c-accent-lt); }
+.site-foot .foot-links { display: flex; flex-wrap: wrap; gap: var(--sp-5); }
+
+/* ========================= כפתור חיוג צף (נייד) ========================= */
+
+.floating-call {
+  position: fixed;
+  inset-inline-end: var(--sp-4);
+  bottom: var(--sp-4);
+  z-index: 40;
+  display: none;
+  align-items: center;
+  gap: var(--sp-2);
+  background: var(--c-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  padding: 14px var(--sp-5);
+  box-shadow: var(--shadow-lg);
+}
+.floating-call svg { width: 18px; height: 18px; }
+
+/* ========================= חשיפה בגלילה (דרגה א') ========================= */
+
+.reveal {
+  opacity: 0;
+  translate: 0 14px;
+  transition: opacity .5s var(--ease-out), translate .5s var(--ease-out);
+}
+.reveal.is-in { opacity: 1; translate: none; }
+html:not(.js) .reveal { opacity: 1; translate: none; }
+
+/* ========================= נייד ========================= */
+
+@media (max-width: 860px) {
+  :root { --content-padding: 20px; }
+
+  .nav-toggle { display: inline-flex; position: relative; }
+
+  .nav-menu {
+    position: fixed;
+    inset: var(--nav-h) 0 auto 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--c-card);
+    border-bottom: 1px solid var(--c-line);
+    padding: var(--sp-3) var(--content-padding) var(--sp-6);
+    transform: translateY(-12px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .3s var(--ease-in-out), opacity .3s var(--ease-out);
+    box-shadow: var(--shadow-md);
+  }
+  .nav-menu.is-open { transform: none; opacity: 1; pointer-events: auto; }
+  .nav-menu a {
+    font-size: var(--fs-md);
+    padding-block: var(--sp-4);
+    border-bottom: 1px solid var(--c-line);
+    box-shadow: none;
+  }
+  .nav-menu a[aria-current="page"] { box-shadow: none; color: var(--c-accent); }
+  .nav-menu .nav-cta {
+    margin-top: var(--sp-5);
+    text-align: center;
+    border-bottom: 0;
+    padding-block: 14px;
+  }
+
+  .floating-call { display: inline-flex; }
+  .site-foot .inner { padding-bottom: 84px; }
+
+  .ask { min-height: 84svh; }
+  .cta-band .inner { flex-direction: column; align-items: flex-start; }
+}

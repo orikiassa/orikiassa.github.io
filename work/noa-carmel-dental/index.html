@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>בית</title>
+<meta name="description" content="מרפאת שיניים ד״ר נועה כרמל - רפואת שיניים פרטית">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&family=Assistant:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo js-logo-text" href="index.html">שם המרפאה</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html" aria-current="page">בית</a>
+      <a href="about.html">אודות</a>
+      <a href="services.html">טיפולים</a>
+      <a href="gallery.html">גלריה</a>
+      <a href="contact.html">צור קשר</a>
+      <a href="contact.html" class="btn btn-primary nav-cta"><span class="js-nav-cta-text"></span></a>
+    </nav>
+    <a href="contact.html" class="btn btn-primary header-cta desktop-only"><span class="js-nav-cta-text"></span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="פתיחת תפריט" aria-expanded="false"></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <p class="eyebrow" id="heroEyebrow"></p>
+      <h1 id="heroTitle"></h1>
+      <p class="sub" id="heroSubtitle"></p>
+      <div class="hero-actions">
+        <a href="contact.html" class="btn btn-primary" id="heroCtaPrimary"></a>
+        <a href="services.html" class="btn-text" id="heroCtaSecondary"></a>
+      </div>
+    </div>
+    <div class="hero-visual" id="heroVisual" aria-hidden="true">
+      <span class="hero-visual-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-3 0-4.5 2.2-4.5 5 0 4 1.5 5 1.9 8.3.1 1 .9 1.7 1.6 1.7s1.4-.9 1.4-2c0-1.6 1.2-1.6 1.2 0 0 1.1.7 2 1.4 2s1.5-.7 1.6-1.7C17 15 18.5 14 18.5 10c0-2.8-1.5-7-4.7-7"/></svg>
+      </span>
+    </div>
+  </div>
+</section>
+
+<section class="highlights">
+  <div class="container">
+    <div class="highlights-row" id="highlightsRow"></div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">תחומי טיפול</p>
+      <h2 class="section-title">מהטיפולים שאנחנו מציעים</h2>
+      <p class="section-lede">מבדיקה תקופתית ועד שיקום מורכב - כל טיפול מתחיל בהסבר מלא ותוכנית שמתאימה לכם.</p>
+    </div>
+    <div class="service-grid" id="servicesTeaser"></div>
+    <div class="services-more">
+      <a href="services.html" class="btn btn-primary">לכל הטיפולים</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head center">
+      <p class="eyebrow">מה אומרים המטופלים שלנו</p>
+      <h2 class="section-title">ביקורות</h2>
+    </div>
+    <div class="testimonial-grid" id="testimonialGrid"></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <strong class="js-footer-name"></strong>
+      <p class="js-footer-specialty"></p>
+      <p class="js-footer-address"></p>
+    </div>
+    <nav class="footer-nav">
+      <a href="index.html">בית</a>
+      <a href="about.html">אודות</a>
+      <a href="services.html">טיפולים</a>
+      <a href="gallery.html">גלריה</a>
+      <a href="contact.html">צור קשר</a>
+    </nav>
+    <div class="footer-contact">
+      <a class="js-footer-phone" href="#"></a>
+      <a class="js-footer-email" href="#"></a>
+    </div>
+  </div>
+  <p class="built-by js-built-by"></p>
+</footer>
+
+<a class="mobile-call-btn" id="mobileCallBtn" href="#"></a>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

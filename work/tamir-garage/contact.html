@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>צור קשר</title>
+<meta name="description" content="יצירת קשר וקביעת תור במוסך תמיר, ראשון לציון">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Suez+One&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo js-logo-text" href="index.html">שם העסק</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">בית</a>
+      <a href="about.html">אודות</a>
+      <a href="services.html">שירותים</a>
+      <a href="gallery.html">גלריה</a>
+      <a href="contact.html" aria-current="page">צור קשר</a>
+      <a href="contact.html" class="btn btn-primary nav-cta"><span class="js-nav-cta-text"></span></a>
+    </nav>
+    <a href="contact.html" class="btn btn-primary header-cta desktop-only"><span class="js-nav-cta-text"></span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="פתיחת תפריט" aria-expanded="false"></button>
+  </div>
+</header>
+
+<section class="contact-hero">
+  <div class="container">
+    <p class="eyebrow">נשמח לראותכם</p>
+    <h1 class="section-title" style="font-size:clamp(1.8rem,3.6vw,3rem); letter-spacing:var(--ls-display);">קביעת תור ויצירת קשר</h1>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container contact-grid">
+    <div class="contact-form-wrap">
+      <h2 id="contactFormTitle" style="font-size:var(--fs-lg); letter-spacing:var(--ls-lg); color:var(--color-primary);"></h2>
+      <p id="contactFormSubtitle" style="color:var(--color-steel); font-size:var(--fs-sm); margin-top:6px;"></p>
+      <form class="contact-form" id="contactForm">
+        <label>שם מלא<input type="text" name="name" required></label>
+        <label>טלפון<input type="tel" name="phone" required></label>
+        <label>הודעה<textarea name="message" rows="4" placeholder="ספרו לנו מה קורה עם הרכב"></textarea></label>
+        <button type="submit" class="btn btn-primary">שליחה</button>
+        <p class="form-success" id="formSuccess" hidden></p>
+      </form>
+    </div>
+    <div class="contact-info">
+      <div class="contact-info-block">
+        <h3>טלפון</h3>
+        <a id="contactPhone" href="#"></a>
+      </div>
+      <div class="contact-info-block">
+        <h3>אימייל</h3>
+        <a id="contactEmail" href="#"></a>
+      </div>
+      <div class="contact-info-block">
+        <h3>כתובת</h3>
+        <p id="contactAddress"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" style="padding-top:0;">
+  <div class="container">
+    <div class="visit-inner">
+      <div class="visit-hours">
+        <p class="address-line" id="addressLine"></p>
+        <table class="hours-table" id="hoursTable"></table>
+      </div>
+      <div class="map-wrap">
+        <iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="מיקום מוסך תמיר על המפה"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <strong class="js-footer-name"></strong>
+      <p class="js-footer-address"></p>
+    </div>
+    <nav class="footer-nav">
+      <a href="index.html">בית</a>
+      <a href="about.html">אודות</a>
+      <a href="services.html">שירותים</a>
+      <a href="gallery.html">גלריה</a>
+      <a href="contact.html">צור קשר</a>
+    </nav>
+    <div class="footer-contact">
+      <a class="js-footer-phone" href="#"></a>
+      <a class="js-footer-email" href="#"></a>
+    </div>
+  </div>
+  <p class="built-by js-built-by"></p>
+</footer>
+
+<a class="mobile-call-btn" id="mobileCallBtn" href="#" aria-label="התקשרו עכשיו"></a>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
