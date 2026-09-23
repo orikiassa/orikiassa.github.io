@@ -490,6 +490,7 @@ h1, h2, h3, h4 {
 
 .work-grid { display: grid; gap: var(--sp-6); grid-template-columns: 1fr; }
 @media (min-width: 800px) { .work-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1100px) { .work-grid { grid-template-columns: repeat(3, 1fr); } }
 
 .work-card {
   background: var(--c-card);

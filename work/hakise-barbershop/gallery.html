@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>גלריה · הכיסא</title>
+<meta name="description" content="תמונות מהמספרה - תספורות, זקנים, גילוח בתער ומגבת חמה.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bellefair&family=Rubik:wght@400;500&display=swap">
+<script>document.documentElement.className += " js";</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">דילוג לתוכן</a>
+
+<header class="masthead">
+  <div class="wrap masthead__row">
+    <a class="logo" href="index.html">
+      <b class="js-name">הכיסא</b>
+      <small class="js-latin" dir="ltr">HAKISE · BARBERSHOP · EST. 1998</small>
+    </a>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav">תפריט</button>
+    <nav class="nav" id="nav" aria-label="ניווט ראשי">
+      <a href="index.html">בית</a>
+      <a href="services.html">שירותים ומחירים</a>
+      <a href="barbers.html">הספרים</a>
+      <a href="gallery.html" aria-current="page">גלריה</a>
+      <a href="visit.html">הגעה</a>
+      <a href="book.html" class="nav__book">קביעת תור</a>
+    </nav>
+    <a class="masthead__tel js-phone" href="tel:0390000000" dir="ltr">03-900-0000</a>
+  </div>
+  <div class="pole" aria-hidden="true"></div>
+</header>
+
+<main id="main">
+
+  <section class="wrap page-open">
+    <span class="kicker reveal">גלריה</span>
+    <h1 class="reveal">מהכיסא.</h1>
+    <p class="lede reveal">תספורות, זקנים וגילוחים מהשבועות האחרונים. לחיצה על תמונה מגדילה אותה.</p>
+  </section>
+
+  <section class="wrap">
+    <div class="gallery" id="galleryGrid"></div>
+  </section>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="תמונה מוגדלת" aria-hidden="true">
+    <button type="button">סגירה</button>
+    <img alt="">
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="pole" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="foot__top">
+      <div class="foot__name">
+        <b class="js-name">הכיסא</b>
+        <small class="js-specialty">מספרה קלאסית</small>
+      </div>
+      <nav aria-label="ניווט תחתון">
+        <a href="index.html">בית</a>
+        <a href="services.html">שירותים ומחירים</a>
+        <a href="barbers.html">הספרים</a>
+        <a href="gallery.html" aria-current="page">גלריה</a>
+        <a href="visit.html">הגעה</a>
+        <a href="book.html">קביעת תור</a>
+      </nav>
+      <div class="foot__contact">
+        <p><span class="js-address">הרצל 12, נס ציונה</span><br>
+        <a class="js-phone" href="tel:0390000000" dir="ltr">03-900-0000</a></p>
+        <ul class="hours js-hours" style="margin-top:var(--sp-3)"></ul>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span>© <span class="js-year">2026</span> <span class="js-name">הכיסא</span>. כל הזכויות שמורות.</span>
+      <span class="js-built-by">דוגמת עבודה · עסק בדיוני · נבנה על ידי אורי אסא, בניית אתרים לעסקים</span>
+    </div>
+  </div>
+</footer>
+<a class="btn btn-accent float-book" href="book.html">קביעת תור</a>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

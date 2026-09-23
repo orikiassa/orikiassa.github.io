@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>קביעת תור · הכיסא</title>
+<meta name="description" content="קביעת תור בהכיסא - בוחרים ספר, שירות, יום ושעה.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bellefair&family=Rubik:wght@400;500&display=swap">
+<script>document.documentElement.className += " js";</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">דילוג לתוכן</a>
+
+<header class="masthead">
+  <div class="wrap masthead__row">
+    <a class="logo" href="index.html">
+      <b class="js-name">הכיסא</b>
+      <small class="js-latin" dir="ltr">HAKISE · BARBERSHOP · EST. 1998</small>
+    </a>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav">תפריט</button>
+    <nav class="nav" id="nav" aria-label="ניווט ראשי">
+      <a href="index.html">בית</a>
+      <a href="services.html">שירותים ומחירים</a>
+      <a href="barbers.html">הספרים</a>
+      <a href="gallery.html">גלריה</a>
+      <a href="visit.html">הגעה</a>
+      <a href="book.html" aria-current="page" class="nav__book">קביעת תור</a>
+    </nav>
+    <a class="masthead__tel js-phone" href="tel:0390000000" dir="ltr">03-900-0000</a>
+  </div>
+  <div class="pole" aria-hidden="true"></div>
+</header>
+
+<main id="main">
+
+  <section class="wrap page-open">
+    <span class="kicker reveal">קביעת תור</span>
+    <h1 class="reveal">ארבע בחירות, ואתם בכיסא.</h1>
+    <p class="lede reveal">בוחרים ספר, שירות, יום ושעה. התור נשמר ב<span class="js-booking-system">מערכת התורים של המספרה</span>, ותזכורת נשלחת יום לפני.</p>
+  </section>
+
+  <section class="wrap">
+    <form class="booker" id="booker" onsubmit="return false">
+      <div>
+        <fieldset class="step reveal">
+          <legend><span>1</span>אצל מי</legend>
+          <div class="choice-grid" id="pickBarber"></div>
+        </fieldset>
+        <fieldset class="step reveal">
+          <legend><span>2</span>מה עושים</legend>
+          <div class="choice-list" id="pickService"></div>
+        </fieldset>
+        <fieldset class="step reveal">
+          <legend><span>3</span>איזה יום</legend>
+          <div class="days" id="pickDay"></div>
+        </fieldset>
+        <fieldset class="step reveal">
+          <legend><span>4</span>באיזו שעה</legend>
+          <div class="slots" id="pickTime" aria-live="polite"></div>
+        </fieldset>
+      </div>
+      <aside class="summary reveal" aria-live="polite">
+        <h2>התור שלכם</h2>
+        <dl>
+          <div><dt>ספר</dt><dd id="sumBarber">—</dd></div>
+          <div><dt>שירות</dt><dd id="sumService">—</dd></div>
+          <div><dt>מתי</dt><dd id="sumWhen">—</dd></div>
+          <div class="total"><dt>מחיר</dt><dd id="sumPrice">—</dd></div>
+        </dl>
+        <a class="btn btn-brass" id="bookGo" href="#" aria-disabled="true">לאישור התור</a>
+        <p class="summary__note">האישור נשלח ב־SMS. אפשר לבטל או להזיז עד שלוש שעות לפני.</p>
+        <p class="demo-notice" id="bookNotice" hidden>זו דוגמת עבודה. באתר אמיתי הכפתור הזה מעביר למערכת התורים שהמספרה כבר עובדת איתה, עם הבחירות שעשיתם כאן.</p>
+      </aside>
+    </form>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="pole" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="foot__top">
+      <div class="foot__name">
+        <b class="js-name">הכיסא</b>
+        <small class="js-specialty">מספרה קלאסית</small>
+      </div>
+      <nav aria-label="ניווט תחתון">
+        <a href="index.html">בית</a>
+        <a href="services.html">שירותים ומחירים</a>
+        <a href="barbers.html">הספרים</a>
+        <a href="gallery.html">גלריה</a>
+        <a href="visit.html">הגעה</a>
+        <a href="book.html" aria-current="page">קביעת תור</a>
+      </nav>
+      <div class="foot__contact">
+        <p><span class="js-address">הרצל 12, נס ציונה</span><br>
+        <a class="js-phone" href="tel:0390000000" dir="ltr">03-900-0000</a></p>
+        <ul class="hours js-hours" style="margin-top:var(--sp-3)"></ul>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span>© <span class="js-year">2026</span> <span class="js-name">הכיסא</span>. כל הזכויות שמורות.</span>
+      <span class="js-built-by">דוגמת עבודה · עסק בדיוני · נבנה על ידי אורי אסא, בניית אתרים לעסקים</span>
+    </div>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
